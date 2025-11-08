@@ -29,7 +29,8 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session);
     } catch (error) {
       setUser(null);
-      console.log(error);
+      if (error instanceof Error) return error.message;
+      return "An error occurred when fetching session";
     }
   }
 
